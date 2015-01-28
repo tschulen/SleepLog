@@ -65,3 +65,5 @@ success!
 timestamp: 2015-01-27T22:11:22.274803
 ALTER TABLE entry ADD user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE;
 success!
+success!
+success!
