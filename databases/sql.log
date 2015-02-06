@@ -70,3 +70,6 @@ success!
 timestamp: 2015-02-05T16:41:19.660812
 ALTER TABLE entry ADD category CHAR(512);
 success!
+timestamp: 2015-02-05T17:19:30.059059
+ALTER TABLE entry ADD picture CHAR(512);
+success!
