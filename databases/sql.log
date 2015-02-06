@@ -73,3 +73,6 @@ success!
 timestamp: 2015-02-05T17:19:30.059059
 ALTER TABLE entry ADD picture CHAR(512);
 success!
+timestamp: 2015-02-05T17:57:21.291698
+ALTER TABLE entry ADD is_private CHAR(1);
+success!
