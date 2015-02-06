@@ -67,3 +67,6 @@ ALTER TABLE entry ADD user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCAD
 success!
 success!
 success!
+timestamp: 2015-02-05T16:41:19.660812
+ALTER TABLE entry ADD category CHAR(512);
+success!
