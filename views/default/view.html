@@ -1,0 +1,22 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+<h1>Post</h1>
+<div id ="viewable" style = "color:white">
+{{=form}}
+
+{{if dreamCategory == 'Nightmare':}}
+
+<script type="text/javascript">
+
+urlTest = "https://img1.etsystatic.com/023/0/6214610/il_570xN.480083485_26t5.jpg"
+
+$("#main").css('background-image', 'url(' + urlTest + ')');
+</script>
+
+{{pass}}
+
+ </div>
+<p>
+{{=A('Return', _class='btn',_href=URL('default','index'))}}
+</p>
