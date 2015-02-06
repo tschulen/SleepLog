@@ -10,8 +10,9 @@
 #########################################################################
 
 def index():
+    entry = entries=db().select(db.entry.body)) 
 
-    return dict(entries=db().select(db.entry.ALL))
+    return dict()
 
 
 def user():
