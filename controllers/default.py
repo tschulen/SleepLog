@@ -10,9 +10,17 @@
 #########################################################################
 
 def index():
-    
-
-    return dict(entries=db().select(db.entry.ALL))
+    q = db.entry
+    title = db().select(db.entry.title)
+    entries = db().select(db.entry.body)    
+    form = SQLFORM.grid(q,
+        fields=[db.entry.user_id, db.entry.date_posted,
+                db.entry.category, db.entry.title,
+                db.entry.body],
+        editable=False, deletable=False,
+        paginate=10,
+        )  
+    return dict(form=form, title=title)
 
 
 def user():

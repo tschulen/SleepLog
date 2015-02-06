@@ -8,7 +8,7 @@ db.define_table('entry',
         Field('is_private', 'boolean'),
         Field('category'),
         Field('user_id', db.auth_user),
-	Field('picture', 'upload'),           #User profile picture. TODO: Set Size Const. to 100x100px
+        Field('picture', 'upload'),           #User profile picture. TODO: Set Size Const. to 100x100px
         )
 
 db.entry.id.readable = False
