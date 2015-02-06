@@ -75,3 +75,21 @@ def api():
 def manage():
     grid = SQLFORM.smartgrid(db.entry, linked_tables=['entry'])
     return dict(grid=grid)
+
+
+
+
+def edit():
+    """edit post"""
+    p = db.entry(request.args(0)) or redirect(URL('default', 'index'))
+   # if p.user_id != auth.user_id:
+   #     session.flash = T('Not Authorized')
+   #     redirect(URL('default','index'))
+
+   # USER AUTHENTICATION NOT YET IMPLEMENTED
+    form = SQLFORM(db.entry, record=p)
+    if form.process().accepted:
+        session.flash = T('Updated')
+        redirect(URL('default', 'view', args=[p.id]))
+    return dict(form=form)
+    
