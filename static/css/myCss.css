@@ -1,0 +1,13 @@
+canvas {
+	display: block;
+	position: fixed;
+}
+.btn{
+	position: relative;
+	z-index: 1;
+}
+
+#viewable {
+	position: relative;
+	z-index: 1;
+}
