@@ -16,7 +16,7 @@ List of Collaborators:
 
  John Kang      : Product Owner, Head Developer
  Ethan Shimooka : Developer
- Andy Ly       : Developer
+ Andy Ly        : Developer
  Martin Wong    : Developer
  Tyler S.       : Developer
 
