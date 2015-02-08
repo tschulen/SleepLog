@@ -12,12 +12,34 @@
 def index():
     q = db.entry
     title = db().select(db.entry.title)
-    entries = db().select(db.entry.body)    
+    entries = db().select(db.entry.body)
+    url = URL('download')
+    # LOL I'm bad for copying and pasting similar things
+    def generate_view_button(row):
+        b = '' 
+        b = A('View', _class = 'btn', _href=URL('default','view',args=[row.id]))
+        return b
+
+    def generate_edit_button(row):
+        #If the record is ours, we can edit it.
+        b = ''
+        if auth.user_id == row.user_id:
+            b = A('Edit', _class = 'btn', _href=URL('default','edit',args=[row.id]))
+        return b
+     # creates extra buttons
+    links = []
+    links.append(dict(header= '',body = generate_edit_button))
+    links.append(dict(header= '', body = generate_view_button))
+
     form = SQLFORM.grid(q,
         fields=[db.entry.user_id, db.entry.date_posted,
                 db.entry.category, db.entry.title,
                 db.entry.body],
         editable=False, deletable=False,
+        details = False,
+        links = links,
+        csv= False,
+        upload= url,
         paginate=10,
         )  
     return dict(form=form, title=title)
@@ -78,18 +100,28 @@ def manage():
 
 
 
-
+@auth.requires_login()
 def edit():
     """edit post"""
     p = db.entry(request.args(0)) or redirect(URL('default', 'index'))
-   # if p.user_id != auth.user_id:
-   #     session.flash = T('Not Authorized')
-   #     redirect(URL('default','index'))
+    if p.user_id != auth.user_id:
+        session.flash = T('Not Authorized')
+        redirect(URL('default','index'))
 
    # USER AUTHENTICATION NOT YET IMPLEMENTED
     form = SQLFORM(db.entry, record=p)
     if form.process().accepted:
         session.flash = T('Updated')
-        redirect(URL('default', 'view', args=[p.id]))
+        redirect(URL('default', 'index'))
+        # redirect(URL('default', 'view', args=[p.id]))
     return dict(form=form)
     
+def view():
+    """view a post"""
+    # p = db(db.bboard.id == request.args(0)).select().first()
+    p = db.entry(request.args(0)) or redirect(URL('default','index'))
+    url = URL('download')
+    dreamCategory = p.category
+    form = SQLFORM(db.entry, record = p, readonly = True, upload=url)
+    # p.name would contain the name of the poster.
+    return dict(form=form, dreamCategory=dreamCategory)
