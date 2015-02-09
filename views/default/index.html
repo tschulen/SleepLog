@@ -4,3 +4,46 @@
 <h2>Today's dreams...</h2>
 {{=title}}
 {{=form}}
+
+
+<!-- Seems like you can use html things with _ in this python, feel free change any images  -->
+{{=A(
+	IMG(_src=URL('static/images','cloud.png'), _name = "cloudbutton", _alt="cloudbutton",_width = "30", _height = "30", _id = "cloudpic", _border = "0",
+	_onMouseOver = "this.src='/SleepLog/static/images/cloud3.png'",
+	_onMouseOut = "this.src='/SleepLog/static/images/cloud.png'" ),
+	_href=URL('default', 'index')
+	)}}
+
+<!-- This method does exactly the same thing as above-->
+<a href="#" onMouseOver="return changeImage()" onMouseOut= "return changeImageBack()" >
+	<img src="/SleepLog/static/images/star.png" name = "starbutton" id = "starbutton" border = "0" alt="starbutton"  width="30" height="30" />
+</a>
+
+{{=A(
+	IMG(_src=URL('static/images','ghost.png'), _name = "ghostbutton", _alt="ghostbutton",_width = "30", _height = "30", _id = "ghostpic", _border = "0",
+	_onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
+	_onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
+	_href=URL('default', 'index')
+	)}}
+
+<!-- I'll be lazy with the js here for now, but it's best to keep in own .js file -->
+
+<script type="text/javascript">
+
+// This uses the name defined in img
+var mycloudobj = document.images["cloudbutton"];
+var mystarobj = document.images["starbutton"];
+
+function changeImage()
+{
+document.images["starbutton"].src= "/SleepLog/static/images/star2.png";
+return true;
+}
+function changeImageBack()
+{
+ document.images["starbutton"].src = "/SleepLog/static/images/star.png";
+ return true;
+}
+
+
+</script>
