@@ -16,7 +16,7 @@ List of Collaborators:
 
  John Kang      : Product Owner, Head Developer
  Ethan Shimooka : Developer
- Andy Ly       : Developer
+ Andy Ly        : Developer
  Martin Wong    : Developer
  Tyler S.       : Developer
 
@@ -25,6 +25,4 @@ List of Collaborators:
 
 -Added Fields for User input
 -Added Default.html
--Modified Contorllers for Index() and Edit()
- 
-  
+-Modified Contorllers for Index() and Edit() 
