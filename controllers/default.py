@@ -47,6 +47,9 @@ def index():
 
     return dict(form=form, title=title)
 
+def about():
+    pass
+
 
 def user():
     """
