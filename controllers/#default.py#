@@ -14,11 +14,10 @@ def index():
     title = db().select(db.entry.title)
     entries = db().select(db.entry.body)
     url = URL('download')
-
     # LOL I'm bad for copying and pasting similar things
     def generate_view_button(row):
         b = '' 
-        b = A('View', _class = 'btn', _href=URL('default','view',args=[row.id]))
+        b = A('View', _class = 'btn', _h
         return b
 
     def generate_edit_button(row):
@@ -27,10 +26,9 @@ def index():
         if auth.user_id == row.user_id:
             b = A('Edit', _class = 'btn', _href=URL('default','edit',args=[row.id]))
         return b
-
      # creates extra buttons
     links = []
-    links.append(dict(header= '', body = generate_edit_button))
+    links.append(dict(header= '',body = generate_edit_button))
     links.append(dict(header= '', body = generate_view_button))
 
     form = SQLFORM.grid(q,
@@ -44,7 +42,6 @@ def index():
         upload= url,
         paginate=10,
         )  
-
     return dict(form=form, title=title)
 
 

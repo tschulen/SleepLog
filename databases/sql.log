@@ -76,3 +76,21 @@ success!
 timestamp: 2015-02-05T17:57:21.291698
 ALTER TABLE entry ADD is_private CHAR(1);
 success!
+success!
+timestamp: 2015-02-13T00:45:19.331446
+ALTER TABLE entry ADD private CHAR(1);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
