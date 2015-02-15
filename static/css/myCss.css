@@ -1,6 +1,9 @@
+
+/*I was told having z-index -1 is bad for certain browsers, but feel free to test*/
 canvas {
 	display: block;
 	position: fixed;
+	z-index: -1;
 }
 .btn{
 	position: relative;
