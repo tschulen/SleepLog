@@ -1,9 +1,9 @@
 
-/*I was told having z-index -1 is bad for certain browsers, but feel free to test*/
 canvas {
 	display: block;
 	position: fixed;
 	z-index: -1;
+	/*I was told having z-index -1 is bad for certain browsers, but feel free to test*/
 }
 .btn{
 	position: relative;
@@ -15,3 +15,7 @@ canvas {
 	z-index: 1;
 }
 
+#postcontents{
+	background-repeat: no-repeat;
+	/*Other options are: repeat, repeat-x, repeat-y, no-repeat*/
+}

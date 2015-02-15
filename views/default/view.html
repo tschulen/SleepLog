@@ -14,7 +14,16 @@
 
 		urlTest = "https://img1.etsystatic.com/023/0/6214610/il_570xN.480083485_26t5.jpg"
 		document.getElementById("viewable").style.color = "white";
-		$("#main").css('background-image', 'url(' + urlTest + ')');
+
+		var myNode = document.getElementById("viewable");
+		var tds = myNode.getElementsByTagName("td");
+
+	    for(var i = 0, j = tds.length; i < j; ++i)
+	       tds[i].style.color = "white";
+
+		$("#postcontents").css('background-image', 'url(' + urlTest + ')');
+		$("#postcontents").css("background-size", "100% 100%");
+		//other ways of background size is: 100% 100% by width/height, cover, or contain
 	</script>
 
 {{pass}}
