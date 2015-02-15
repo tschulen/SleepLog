@@ -8,9 +8,12 @@
 """
 response.logo = A(B('web',SPAN(2),'py'),XML('&trade;&nbsp;'),
                   _class="brand",_href="http://www.web2py.com/")
+response.logo = A(IMG(_src=URL('static', 'images/sleeplogomini.png')),
+                  _href=URL('default', 'index'))
 """
 
-response.title = 'SleepLog'
+response.title = A(IMG(_src=URL('static', 'images/sleeplogomini.png')),
+                  _href=URL('default', 'index'),_alt='SleepLog', _title='SleepLog Logo')
 response.subtitle = 'A dream journal for the web'
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
