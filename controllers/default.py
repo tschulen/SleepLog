@@ -18,7 +18,29 @@ def index():
     # LOL I'm bad for copying and pasting similar things
     def generate_view_button(row):
         b = '' 
-        b = A('View', _class = 'btn', _href=URL('default','view',args=[row.id]))
+        if row.category == "Normal":
+            b = A(IMG(_src=URL('static/images','cloud.png'), _name = "cloudbutton",
+                         _alt="cloudbutton",_width = "30", _height = "30", 
+                         _id = "cloudpic", _border = "0",
+                         _onMouseOver = "this.src='/SleepLog/static/images/cloud3.png'",
+                         _onMouseOut = "this.src='/SleepLog/static/images/cloud.png'" ),
+                         _class = 'btn', _href=URL('default','view',args=[row.id]))
+        elif row.category == "Nightmare":
+            b = A(IMG(_src=URL('static/images','ghost.png'), _name = "ghostbutton", 
+                        _alt="ghostbutton",_width = "30", _height = "30",
+                        _id = "ghostpic", _border = "0",
+                        _onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
+                        _onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
+                        _class = 'btn', _href=URL('default','edit',args=[row.id]))
+        elif row.category == "Lucid":
+            b = A(IMG(_src=URL('static/images', 'star.png'), _name="starbutton",
+                        _alt = "starbutton", _width="30", _height="30", 
+                        _id = "starpic", _border="0", 
+                        _onMouseOver = "this.src='/SleepLog/static/images/star.png'",
+                        _onMouseOut = "this.src='/SleepLog/static/images/star2.png'"),
+                        _class = 'btn', _href=URL('default','edit',args=[row.id]))
+                        
+                         
         return b
 
     def generate_edit_button(row):
@@ -33,7 +55,7 @@ def index():
     links.append(dict(header= '', body = generate_edit_button))
     links.append(dict(header= '', body = generate_view_button))
 
-    form = SQLFORM.grid(q,
+    grid = SQLFORM.grid(q,
         fields=[db.entry.user_id, db.entry.date_posted,
                 db.entry.category, db.entry.title,
                 db.entry.body],
@@ -45,7 +67,7 @@ def index():
         paginate=10,
         )  
 
-    return dict(form=form, title=title)
+    return dict(title=title, grid=grid)
 
 def about():
     return dict()
