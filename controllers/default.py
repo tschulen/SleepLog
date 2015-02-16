@@ -15,9 +15,9 @@ def index():
     entries = db().select(db.entry.body)
     url = URL('download')
 
-    # LOL I'm bad for copying and pasting similar things
     def generate_view_button(row):
         b = '' 
+        # Cloud button for 'Normal' category
         if row.category == "Normal":
             b = A(IMG(_src=URL('static/images','cloud.png'), _name = "cloudbutton",
                          _alt="cloudbutton",_width = "30", _height = "30", 
@@ -25,6 +25,7 @@ def index():
                          _onMouseOver = "this.src='/SleepLog/static/images/cloud3.png'",
                          _onMouseOut = "this.src='/SleepLog/static/images/cloud.png'" ),
                          _class = 'btn', _href=URL('default','view',args=[row.id]))
+        # Ghost button for 'Normal' category
         elif row.category == "Nightmare":
             b = A(IMG(_src=URL('static/images','ghost.png'), _name = "ghostbutton", 
                         _alt="ghostbutton",_width = "30", _height = "30",
@@ -32,6 +33,8 @@ def index():
                         _onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
                         _class = 'btn', _href=URL('default','edit',args=[row.id]))
+        # Star button for 'Normal' category
+        # TODO May want to have star glow when hovering over with mouse
         elif row.category == "Lucid":
             b = A(IMG(_src=URL('static/images', 'star.png'), _name="starbutton",
                         _alt = "starbutton", _width="30", _height="30", 
@@ -39,9 +42,8 @@ def index():
                         _onMouseOver = "this.src='/SleepLog/static/images/star.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/star2.png'"),
                         _class = 'btn', _href=URL('default','edit',args=[row.id]))
-                        
-                         
         return b
+
 
     def generate_edit_button(row):
         #If the record is ours, we can edit it.
@@ -50,22 +52,24 @@ def index():
             b = A('Edit', _class = 'btn', _href=URL('default','edit',args=[row.id]))
         return b
 
-     # creates extra buttons
+    # creates extra buttons
     links = []
     links.append(dict(header= '', body = generate_edit_button))
     links.append(dict(header= '', body = generate_view_button))
 
+    # Generate grid from database
     grid = SQLFORM.grid(q,
         fields=[db.entry.user_id, db.entry.date_posted,
                 db.entry.category, db.entry.title,
                 db.entry.body],
-        editable=False, deletable=False,
-        details = False,
-        links = links,
-        csv= False,
-        upload= url,
-        paginate=10,
-        )  
+                csv= False,
+                editable=False,
+                deletable=False,
+                details = False,
+                links = links,
+                paginate=10,
+                upload= url,
+                )  
 
     return dict(title=title, grid=grid)
 

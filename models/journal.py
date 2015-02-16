@@ -10,6 +10,7 @@ db.define_table('entry',
         Field('picture', 'upload'),           #User profile picture. TODO: Set Size Const. to 100x100px
         )
 
+db.entry.category.readable = False
 db.entry.id.readable = False
 db.entry.date_posted.default = datetime.utcnow()
 db.entry.date_posted.writable = False 
