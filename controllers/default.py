@@ -32,16 +32,16 @@ def index():
                         _id = "ghostpic", _border = "0",
                         _onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
-                        _class = 'btn', _href=URL('default','edit',args=[row.id]))
+                        _class = 'btn', _href=URL('default','view',args=[row.id]))
         # Star button for 'Normal' category
         # TODO May want to have star glow when hovering over with mouse
         elif row.category == "Lucid":
             b = A(IMG(_src=URL('static/images', 'star.png'), _name="starbutton",
                         _alt = "starbutton", _width="30", _height="30", 
                         _id = "starpic", _border="0", 
-                        _onMouseOver = "this.src='/SleepLog/static/images/star.png'",
-                        _onMouseOut = "this.src='/SleepLog/static/images/star2.png'"),
-                        _class = 'btn', _href=URL('default','edit',args=[row.id]))
+                        _onMouseOver = "this.src='/SleepLog/static/images/star2.png'",
+                        _onMouseOut = "this.src='/SleepLog/static/images/star.png'"),
+                        _class = 'btn', _href=URL('default','view',args=[row.id]))
         return b
 
 
