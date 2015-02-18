@@ -54,7 +54,8 @@ auth.settings.extra_fields['auth_user']= [
   Field('address'),
   Field('city'),
   Field('zip'),
-  Field('picture'),
+  Field('state'),  ##check for built in state locater function
+  Field('image'),
   Field('about'),
   Field('phone')]
 ## before auth.define_tables(username=True)

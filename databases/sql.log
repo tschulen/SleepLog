@@ -523,3 +523,22 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2015-02-17T17:27:45.022059
+ALTER TABLE auth_user ADD city CHAR(512);
+timestamp: 2015-02-17T17:27:45.056350
+ALTER TABLE auth_user ADD zip CHAR(512);
+timestamp: 2015-02-17T17:27:45.078700
+ALTER TABLE auth_user ADD picture CHAR(512);
+timestamp: 2015-02-17T17:27:45.108180
+ALTER TABLE auth_user ADD phone CHAR(512);
+timestamp: 2015-02-17T17:27:45.129576
+ALTER TABLE auth_user ADD address CHAR(512);
+timestamp: 2015-02-17T17:27:45.158835
+ALTER TABLE auth_user ADD about CHAR(512);
+success!
+success!
