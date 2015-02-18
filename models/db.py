@@ -54,7 +54,7 @@ auth.settings.extra_fields['auth_user']= [
   Field('address'),
   Field('city'),
   Field('zip'),
-  Field('picture'),
+  Field('picture', type='upload'),
   Field('about'),
   Field('phone')]
 ## before auth.define_tables(username=True)
