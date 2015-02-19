@@ -170,6 +170,12 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   <!-- End Google Analytics -->
   {{pass}}
   <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
+  <script>
+    $(document).ready(function () {
+        $('.page-header').hide().fadeIn(1200);
+    });
+  </script>
+
 </body>
 </html>
 
