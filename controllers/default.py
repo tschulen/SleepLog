@@ -59,9 +59,9 @@ def index():
 
     # Generate grid from database
     grid = SQLFORM.grid(q,
-        fields=[db.entry.user_id, db.entry.date_posted,
+        fields=[db.entry.user_id, 
                 db.entry.category, db.entry.title,
-                db.entry.body],
+                db.entry.body, db.entry.date_posted],
                 csv= False,
                 editable=False,
                 deletable=False,
