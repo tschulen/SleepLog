@@ -196,12 +196,19 @@ div.error {
 .web2py_grid .web2py_form td {vertical-align: top;}
 
 .web2py_grid thead th,.web2py_grid tfoot td {
-    background-color:#201858;
+    background-color:#393276;
     padding:10px 5px 10px 5px;
+}
+.web2py_grid a {
+    color: black;
 }
 
 .web2py_grid tr.odd {background-color:#5B5393}
 .web2py_grid tr:hover {background-color:#847EB1}
+
+.web2py_grid td {
+    color: black;
+}
 
 /*
 .web2py_breadcrumbs a {
