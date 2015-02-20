@@ -1,5 +1,5 @@
 body {
-        background-image: url("../images/symphony/symphony.png");
+  background-image: url("../images/symphony/symphony.png");
 }
 
 canvas {
@@ -23,3 +23,4 @@ canvas {
 	background-repeat: no-repeat;
 	/*Other options are: repeat, repeat-x, repeat-y, no-repeat*/
 }
+
