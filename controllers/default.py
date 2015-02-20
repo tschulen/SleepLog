@@ -10,7 +10,7 @@
 #########################################################################
 
 def index():
-    q = db.entry
+    q = db.entry.private == False
     title = db().select(db.entry.title)
     entries = db().select(db.entry.body)
     url = URL('download')
