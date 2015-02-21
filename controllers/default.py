@@ -157,3 +157,7 @@ def view():
     form = SQLFORM(db.entry, record = p, readonly = True, upload=url)
     # p.name would contain the name of the poster.
     return dict(form=form, dreamCategory=dreamCategory)
+
+
+
+    #
