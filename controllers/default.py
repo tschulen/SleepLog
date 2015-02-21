@@ -178,5 +178,8 @@ def view():
     return dict(form=form, dreamCategory=dreamCategory)
 
 
-
+#New default register screen controller
+def register():
+    """Register Screen"""
     #
+    return dict(form=auth.register())
