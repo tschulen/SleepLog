@@ -52,10 +52,18 @@ def index():
             b = A('Edit', _class = 'btn', _href=URL('default','edit',args=[row.id]))
         return b
 
+    def generate_delete_item_button(row):
+        # If the record is ours, we can confirm to delete it.
+        b = ''
+        if auth.user_id == row.user_id:
+            b = A('Delete Your Post', _class='btn', _href=URL('default', 'delete_item', args=[row.id]))
+        return b
+
     # creates extra buttons
     links = []
     links.append(dict(header= '', body = generate_edit_button))
     links.append(dict(header= '', body = generate_view_button))
+    links.append(dict(header= '', body = generate_delete_item_button))
 
     # Generate grid from database
     grid = SQLFORM.grid(q,
@@ -147,7 +155,18 @@ def edit():
         redirect(URL('default', 'index'))
         # redirect(URL('default', 'view', args=[p.id]))
     return dict(form=form)
-    
+
+
+@auth.requires_login()
+def delete_item():
+     item = db.entry(request.args(0)) or redirect(URL('default', 'index'))
+     form = FORM.confirm('Confirm Delete',{'Back':URL('default', 'index')})
+     if form.accepted:
+         db(db.entry.id == item.id).delete()
+         redirect(URL('default', 'index'))
+     return dict(form=form)
+
+        
 def view():
     """view a post"""
     # p = db(db.bboard.id == request.args(0)).select().first()
@@ -157,3 +176,10 @@ def view():
     form = SQLFORM(db.entry, record = p, readonly = True, upload=url)
     # p.name would contain the name of the poster.
     return dict(form=form, dreamCategory=dreamCategory)
+
+
+#New default register screen controller
+def register():
+    """Register Screen"""
+    #
+    return dict(form=auth.register())
