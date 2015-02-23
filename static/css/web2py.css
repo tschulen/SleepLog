@@ -41,8 +41,8 @@ audio {width:200px}
 
 /* Sticky footer begin */
 
-.main {
-  padding:20px 0 50px 0;
+.links a {
+    color: #9460AC
 }
 
 .footer,.push {
@@ -196,15 +196,15 @@ div.error {
 .web2py_grid .web2py_form td {vertical-align: top;}
 
 .web2py_grid thead th,.web2py_grid tfoot td {
-    background-color:#393276;
+    background-color:#F4E9F9;
     padding:10px 5px 10px 5px;
-}
-.web2py_grid a {
+    border: 1px;
+
+} .web2py_grid a {
     color: black;
 }
 
-.web2py_grid tr.odd {background-color:#5B5393}
-.web2py_grid tr:hover {background-color:#847EB1}
+.web2py_grid tr:hover {background-color:#FCEAF3}
 
 .web2py_grid td {
     color: black;
@@ -279,7 +279,7 @@ div.error {
 .web2py_paginator {
     padding:5px;
     text-align:right;
-    background-color:#f2f2f2;
+    background-color:#97A7BD;
 
 }
 .web2py_paginator ul {
