@@ -1,45 +1,20 @@
-{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{left_sidebar_enabled=True,right_sidebar_enabled,=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
 <h2>Today's dreams...</h2>
 <!-- I'm using tables to create sections, you can even just have two if you wanted
 feel free to mess around with the width and add more/less with the td 
 p.s. the colors are not final, so feel free to change-->
-<table width="100%" border="0">
+{{block center}}
+<table width="95%" border="1px">
   <tr valign="top">
-  	<!-- This is for the left area -->
-    <td bgcolor="#5B5393" width="20%">
-    	<b>Resources</b>
-    </td>
     <!-- This is for the center area, you can adjust height h/e you want, but auto will scale accordingly -->
-    <td bgcolor="#847EB1" height="auto" width="60%">
-		{{=grid}}
-		<!-- Seems like you can use html things with _ in this python, feel free change any images  -->
-		{{=A(
-			IMG(_src=URL('static/images','cloud.png'), _name = "cloudbutton", _alt="cloudbutton",_width = "30", _height = "30", _id = "cloudpic", _border = "0",
-			_onMouseOver = "this.src='/SleepLog/static/images/cloud3.png'",
-			_onMouseOut = "this.src='/SleepLog/static/images/cloud.png'" ),
-			_href=URL('default', 'index')
-			)}}
-
-		<!-- This method does exactly the same thing as above-->
-		<a href="#" onMouseOver="return changeImage()" onMouseOut= "return changeImageBack()" >
-			<img src="/SleepLog/static/images/star.png" name = "starbutton" id = "starbutton" border = "0" alt="starbutton"  width="30" height="30" />
-		</a>
-
-		{{=A(
-			IMG(_src=URL('static/images','ghost.png'), _name = "ghostbutton", _alt="ghostbutton",_width = "30", _height = "30", _id = "ghostpic", _border = "0",
-			_onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
-			_onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
-			_href=URL('default', 'index')
-			)}}
-		</td>
-		<!-- The right side -->
-		<td bgcolor="#5B5393" width="20%">
-                    <b>Social</b>
+    <td bgcolor="#DABEE7" height="auto" width="60%">
+	    {{=grid}}
     	</td>
 	</tr>
 <table>
+    {{end}}
 
 <!-- I'll be lazy with the js here for now, but it's best to keep in own .js file -->
 

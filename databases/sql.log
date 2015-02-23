@@ -1137,6 +1137,8 @@ success!
 success!
 success!
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 timestamp: 2015-02-20T15:48:36.167426
 ALTER TABLE auth_user ADD user_name CHAR(128) UNIQUE;
 timestamp: 2015-02-20T15:49:04.994978
@@ -1269,6 +1271,7 @@ success!
 success!
 success!
 success!
+>>>>>>> master
 success!
 success!
 success!
