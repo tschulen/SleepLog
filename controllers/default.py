@@ -56,14 +56,14 @@ def index():
         # If the record is ours, we can confirm to delete it.
         b = ''
         if auth.user_id == row.user_id:
-            b = A('Delete Your Post', _class='btn', _href=URL('default', 'delete_item', args=[row.id]))
+            b = A('Delete', _class='btn', _href=URL('default', 'delete_item', args=[row.id]))
         return b
 
     # creates extra buttons
     links = []
     links.append(dict(header= '', body = generate_edit_button))
-    links.append(dict(header= '', body = generate_view_button))
     links.append(dict(header= '', body = generate_delete_item_button))
+    links.append(dict(header= '', body = generate_view_button))
 
     # Generate grid from database
     grid = SQLFORM.grid(q,
