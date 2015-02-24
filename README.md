@@ -11,14 +11,10 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Project is currently hosted at:
-
-
-[SleepLog](https://jkang8.pythonanywhere.com/SleepLog/default/index)
+Project is currently hosted at: [SleepLog](https://jkang8.pythonanywhere.com/SleepLog/default/index)
 
 
 Developed with web2py.
-
 
 List of Collaborators:
 
@@ -27,6 +23,5 @@ List of Collaborators:
 * Andy Ly        : Developer
 * Martin Wong    : Developer
 * Tyler S.       : Developer
-
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
