@@ -84,6 +84,12 @@ def index():
 def about():
     return dict()
 
+def statistics():
+    normal_count = db(db.entry.category == 'Normal').count()    
+    nightmare_count = db(db.entry.category == 'Nightmare').count()    
+    lucid_count = db(db.entry.category == 'Lucid').count()    
+    return dict(normal_count=normal_count, nightmare_count=nightmare_count,
+                lucid_count=lucid_count)
 
 def user():
     """
