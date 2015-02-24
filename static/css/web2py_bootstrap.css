@@ -7,6 +7,15 @@
 .span12 {
     width: 850px;
 }
+.span9{
+/*If position was absolute then the transition from toggle smooth*/
+  position: absolute;
+}
+#main{
+  margin: 0 auto;
+
+}
+
 body{height:auto;} /* to avoid vertical scroll bar */
 
 a{}
