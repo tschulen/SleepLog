@@ -12,17 +12,17 @@
 
 	<script type="text/javascript">
 
-		urlTest = "https://img1.etsystatic.com/023/0/6214610/il_570xN.480083485_26t5.jpg"
-		document.getElementById("viewable").style.color = "white";
+		//urlTest = "https://img1.etsystatic.com/023/0/6214610/il_570xN.480083485_26t5.jpg"
+		//document.getElementById("viewable").style.color = "white";
 
-		var myNode = document.getElementById("viewable");
-		var tds = myNode.getElementsByTagName("td");
+		//var myNode = document.getElementById("viewable");
+		//var tds = myNode.getElementsByTagName("td");
 
-	    for(var i = 0, j = tds.length; i < j; ++i)
-	       tds[i].style.color = "white";
+	    //for(var i = 0, j = tds.length; i < j; ++i)
+	     //  tds[i].style.color = "white";
 
-		$("#postcontents").css('background-image', 'url(' + urlTest + ')');
-		$("#postcontents").css("background-size", "100% 100%");
+	//	$("#postcontents").css('background-image', 'url(' + urlTest + ')');
+	//	$("#postcontents").css("background-size", "100% 100%");
 		//other ways of background size is: 100% 100% by width/height, cover, or contain
 	</script>
 
@@ -31,11 +31,13 @@
 {{if dreamCategory == 'Normal':}}
 	<!-- This doesn't seem to work
 	<script type="text/javascript" src="/static/js/starsCanvas.js"></script> -->
+        <!--
 	<script src="{{=URL('static','js/snowcanvas.js')}}"></script>
 	<script type="text/javascript">
 		document.body.style.backgroundColor = "#6b92b9";
 		document.getElementById("viewable").style.color = "white";
 	</script>
+        -->
 
 {{pass}}
 
