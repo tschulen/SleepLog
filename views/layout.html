@@ -46,6 +46,7 @@
   response.files.insert(2,URL('static','css/bootstrap-responsive.min.css'))
   response.files.insert(3,URL('static','css/web2py_bootstrap.css'))
   response.files.insert(4,URL('static','css/myCss.css'))
+  response.files.insert(5,URL('static','css/simple-sidebar.css'))
   }}
 
   {{include 'web2py_ajax.html'}}
@@ -106,36 +107,67 @@
         </div>
 	{{pass}}
     </header>
+    <div id="wrapper">
 
-    <section id="main" class="main row">
-        {{if left_sidebar_enabled:}}
-        <div class="span3 left-sidebar">
-            {{block left_sidebar}}
-            <h3>Menu</h3>
-            <div class="links">
-            <p><a href="about">About</a></p>
-            <p><a href="#">Techniques</a></p>
-            <p><a href="#">Statistics</a></p>
-            </div>
-            {{end}}
-        </div>
-        {{pass}}
 
-        <div class="{{=middle_columns}}">
-            {{block center}}
-            {{include}}
-            {{end}}
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                  {{=A(
+                   IMG(_src=URL('static/images','sleeplogomini.png'), _name = "ghostbutton", _alt="ghostbutton",_width = "50", _height = "50",  _border = "0"),
+                   _href=URL('default', 'index')
+                   )}}
+                  <!--  <a href="index">SleepLog</a> -->
+                </li>
+                <div class="links">
+                <li>
+                    <a href="about">About</a>
+                </li>
+                <li>
+                    <a href="#">Techniques</a>
+                </li>
+                <li>
+                    <a href="#">Statistics</a>
+                </li>
+            
+                </div>
+            </ul>
         </div>
+        <!-- Page Content -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&#10096; Menu</a>
+        <div id="page-content-wrapper">
+          
+          <section id="main" class="main row">
+              {{if left_sidebar_enabled:}}
+              <div class="span3 left-sidebar">
+                  {{block left_sidebar}}
+                  <!-- <h3>Menu</h3>
+                  <div class="links">
+                  <p><a href="about">About</a></p>
+                  <p><a href="#">Techniques</a></p>
+                  <p><a href="#">Statistics</a></p>
+                  </div> -->
+                  {{end}}
+              </div>
+              {{pass}}
 
-        {{if right_sidebar_enabled:}}
-        <div class="span3">
-            {{block right_sidebar}}
-            <h3>Right Sidebar</h3>
-            <p></p>
-            {{end}}
-        </div>
-        {{pass}}
-    </section><!--/main-->
+              <div class="{{=middle_columns}}">
+                  {{block center}}
+                  {{include}}
+                  {{end}}
+              </div>
+
+              {{if right_sidebar_enabled:}}
+              <div class="span3">
+                  {{block right_sidebar}}
+                  <h3>Right Sidebar</h3>
+                  <p></p>
+                  {{end}}
+              </div>
+              {{pass}}
+          </section><!--/main-->
+        </div> <!-- /page-content-wrapper -->
     </div> <!-- /postcontents -->
     <!-- Footer ================================================== -->
     <div class="row">
@@ -179,6 +211,18 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     $(document).ready(function () {
         $('.page-header').hide().fadeIn(1200);
     });
+    var toggleMenu=0;
+    $("#menu-toggle").click(function(e) {
+        toggleMenu++;
+        toggleMenu%=2;
+        if(toggleMenu ==1){
+          document.getElementById("menu-toggle").innerHTML= "&#10097; Menu"
+        }else{
+          document.getElementById("menu-toggle").innerHTML= "&#10096; Menu"
+        }
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
   </script>
 
 </body>
