@@ -109,15 +109,11 @@
     </header>
     <div id="wrapper">
 
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                  {{=A(
-                   IMG(_src=URL('static/images','sleeplogomini.png'), _name = "ghostbutton", _alt="ghostbutton",_width = "50", _height = "50",  _border = "0"),
-                   _href=URL('default', 'index')
-                   )}}
+                <p>Menu</p>
                   <!--  <a href="index">SleepLog</a> -->
                 </li>
                 <div class="links">
@@ -208,9 +204,13 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   {{pass}}
   <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
   <script>
+
+    // Title fades in
     $(document).ready(function () {
         $('.page-header').hide().fadeIn(1200);
     });
+
+    // Toggles the left menu
     var toggleMenu=0;
     $("#menu-toggle").click(function(e) {
         toggleMenu++;

@@ -7,13 +7,24 @@
 .span12 {
     width: 850px;
 }
-.span9{
+.span9 {
 /*If position was absolute then the transition from toggle smooth*/
   position: absolute;
 }
-#main{
+#main {
   margin: 0 auto;
+}
+#wrapper #sidebar-wrapper  {
+  background-color: #B990CD;
+  border: 2px;
+}
 
+#sidebar-wrapper .sidebar-nav .sidebar-brand{
+  background-color: #ECE7F8;
+}
+#sidebar-wrapper a{
+  color: black;
+  border: 2px;
 }
 
 body{height:auto;} /* to avoid vertical scroll bar */
