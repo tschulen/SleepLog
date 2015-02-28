@@ -91,6 +91,9 @@ def statistics():
     return dict(normal_count=normal_count, nightmare_count=nightmare_count,
                 lucid_count=lucid_count)
 
+def chat():
+    return dict()
+    
 def user():
     """
     exposes:
