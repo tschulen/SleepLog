@@ -97,7 +97,7 @@ def chat():
 def emailexample():
     form = SQLFORM.factory(
     Field('name', requires=IS_NOT_EMPTY(), default= get_author()),
-    Field('email', requires =[ IS_EMAIL(error_message='invalid email!'), IS_NOT_EMPTY() ], default=get_email()),
+    Field('email', requires =[ IS_EMAIL(error_message='invalid email!'), IS_NOT_EMPTY() ]),
     Field('subject', requires=IS_NOT_EMPTY()),
     Field('message', requires=IS_NOT_EMPTY(), type='text')
     )
@@ -113,7 +113,8 @@ def emailexample():
             if mail.send(to=[session.email],
                 # same goes for everything here too using session stuffs
                 subject=session.subject,
-                message= session.message
+                # I included the users email as well to be sent.
+                message= "Message from" + get_email() +"\n"+ session.message
             ):
                 response.flash = 'email sent sucessfully.'
             else:

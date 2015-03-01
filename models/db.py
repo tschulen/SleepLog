@@ -109,6 +109,7 @@ auth.define_tables(username=False, signature=False)
 ## configure email
 from gluon.tools import Mail
 mail = Mail()
+# Oh, we can eventually change this so that sender is from the user instead
 # Well using a real account and displaying pw is bad, but atm this account has nothing in it
 mail.settings.server = 'smtp.gmail.com:587'
 mail.settings.sender = 'sleeplogged@gmail.com'
