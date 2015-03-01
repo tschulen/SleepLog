@@ -107,10 +107,12 @@ auth.define_tables(username=False, signature=False)
 
 
 ## configure email
-mail = auth.settings.mailer
-mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
-mail.settings.sender = 'you@gmail.com'
-mail.settings.login = 'username:password'
+from gluon.tools import Mail
+mail = Mail()
+# Well using a real account and displaying pw is bad, but atm this account has nothing in it
+mail.settings.server = 'smtp.gmail.com:587'
+mail.settings.sender = 'sleeplogged@gmail.com'
+mail.settings.login = 'sleeplogged@gmail.com:sleepingallday'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
