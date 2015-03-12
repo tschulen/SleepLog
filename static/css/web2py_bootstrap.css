@@ -21,7 +21,7 @@
 }
 
 .navbar-inverse .nav>li>a{
-  color: yellow;
+  color: white;
 }
 
 #wrapper #sidebar-wrapper  {
@@ -131,7 +131,7 @@ div.controls select +.error_wrapper {margin-left:5px;}
 .navbar-inverse .brand b>span{font-size:22px;color:white}
 .navbar-inverse .brand:hover b>span{color:white}
 /* beautify web2py link in navbar */
-span.highlighted{color:yellow;}
+span.highlighted{color:white;}
 .open span.highlighted{color:white;}
 
 /*=============================================================
@@ -231,7 +231,7 @@ background-repeat:repeat;
 }
 
 /*=============================================================
-                       OTHER RULES
+                       whiteOTHER RULES
 ==============================================================*/
 
 /* Massimo Di Pierro fixed alignment in forms with list:string */
