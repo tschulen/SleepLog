@@ -81,7 +81,13 @@ def index():
 
     return dict(title=title, grid=grid)
 
+def chat():
+    return dict()
+
 def about():
+    return dict()
+
+def faq():
     return dict()
 
 def statistics():
