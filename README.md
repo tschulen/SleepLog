@@ -11,17 +11,22 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Project is currently hosted at: [SleepLog](https://jkang8.pythonanywhere.com/SleepLog/default/index)
+Project is currently hosted at:
+[SleepLog](https://jkang8.pythonanywhere.com/SleepLog/default/index)
 
+Class: CMPS183-Web Applications
+Professor: Luca de Alfaro
+Quarter: Winter 2015
 
-Developed with web2py.
 
 List of Collaborators:
 
 * John Kang      : Product Owner, Head Developer
 * Ethan Shimooka : Developer
 * Andy Ly        : Developer
-* Martin Wong    : Developer
+* Marvin Wong    : Developer
 * Tyler S.       : Developer
 
+
+Developed with web2py.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
