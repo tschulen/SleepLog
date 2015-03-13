@@ -1,0 +1,39 @@
+{{left_sidebar_enabled=True,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+<h2>Statistics</h2>
+<h4>Categories</h4>
+
+<meta charset="utf-8">
+<style>
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: #935FA9;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+
+</style>
+<div class="chart"></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var data = [{{=normal_count}}, {{=nightmare_count}}, {{=lucid_count}} ];
+
+var x = d3.scale.linear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
+
+d3.select(".chart")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .text(function(d) { return d; });
+
+</script>
+
+

@@ -7,6 +7,36 @@
 .span12 {
     width: 850px;
 }
+.span9 {
+/*If position was absolute then the transition from toggle smooth*/
+  position: absolute;
+}
+#main {
+  margin: 0 auto;
+}
+
+.navbar-inverse .navbar-inner{
+  background-color: #B990CD;
+  background-image: none;
+}
+
+.navbar-inverse .nav>li>a{
+  color: white;
+}
+
+#wrapper #sidebar-wrapper  {
+  background-color: #B990CD;
+  border: 2px;
+}
+
+#sidebar-wrapper .sidebar-nav .sidebar-brand{
+  background-color: #ECE7F8;
+}
+#sidebar-wrapper a{
+  color: black;
+  border: 2px;
+}
+
 body{height:auto;} /* to avoid vertical scroll bar */
 
 a{}
@@ -101,8 +131,8 @@ div.controls select +.error_wrapper {margin-left:5px;}
 .navbar-inverse .brand b>span{font-size:22px;color:white}
 .navbar-inverse .brand:hover b>span{color:white}
 /* beautify web2py link in navbar */
-span.highlighted{color:#d8d800;}
-.open span.highlighted{color:#ffff00;}
+span.highlighted{color:white;}
+.open span.highlighted{color:white;}
 
 /*=============================================================
                  OVERRIDING WEB2PY.CSS RULES
@@ -201,7 +231,7 @@ background-repeat:repeat;
 }
 
 /*=============================================================
-                       OTHER RULES
+                       whiteOTHER RULES
 ==============================================================*/
 
 /* Massimo Di Pierro fixed alignment in forms with list:string */

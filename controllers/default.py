@@ -81,9 +81,73 @@ def index():
 
     return dict(title=title, grid=grid)
 
+def chat():
+    return dict()
+
 def about():
     return dict()
 
+def faq():
+    return dict()
+
+def statistics():
+    normal_count = db(db.entry.category == 'Normal').count()    
+    nightmare_count = db(db.entry.category == 'Nightmare').count()    
+    lucid_count = db(db.entry.category == 'Lucid').count()    
+    return dict(normal_count=normal_count, nightmare_count=nightmare_count,
+                lucid_count=lucid_count)
+
+def chat():
+    return dict()
+    
+def emailexample():
+    form = SQLFORM.factory(
+    Field('name', requires=IS_NOT_EMPTY(), default= get_author()),
+    Field('email', requires =[ IS_EMAIL(error_message='invalid email!'), IS_NOT_EMPTY() ]),
+    Field('subject', requires=IS_NOT_EMPTY()),
+    Field('message', requires=IS_NOT_EMPTY(), type='text')
+    )
+    if form.process().accepted:
+        session.name = form.vars.name
+        session.email = form.vars.email
+        session.subject = form.vars.subject
+        session.message = form.vars.message
+
+        # Note that this sends out a dummy mail to your web2py e-mail, emails to yahoo might be slow to arrive
+        if mail:
+            # you can possibly just change it to session.email instead of auth.user.email
+            if mail.send(to=[session.email],
+                # same goes for everything here too using session stuffs
+                subject=session.subject,
+                # I included the users email as well to be sent.
+                message= "Message from" + get_email() +"\n"+ session.message
+            ):
+                response.flash = 'email sent sucessfully.'
+            else:
+                response.flash = 'fail to send email sorry!'
+        else:
+            response.flash = 'Unable to send the email : email parameters not defined'
+    elif form.errors:
+            response.flash='form has errors.'
+
+    return dict(form=form)
+
+def get_author():
+    # This shouldn't be called when a user isn't logged in,
+    # but just in case we have a placeholder name.
+    a = request.client
+    # If we're logged in pull our first and last names into a name
+    if auth.user:
+        a = auth.user.first_name + " " + auth.user.last_name
+    return a
+def get_email():
+    # This shouldn't be called when a user isn't logged in,
+    # but just in case we have a placeholder name.
+    a = "example@blah.com"
+    # If we're logged in pull our first and last names into a name
+    if auth.user:
+        a = auth.user.email
+    return a
 
 def user():
     """

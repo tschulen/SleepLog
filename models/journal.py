@@ -8,7 +8,20 @@ db.define_table('entry',
         Field('category'),
         Field('user_id', db.auth_user),
         Field('picture', 'upload'),           #User profile picture. TODO: Set Size Const. to 100x100px
+        Field('tags', 'list:string'),
         )
+
+db.define_table('tags',
+    Field('title'),
+    format='%(id)s'
+)
+
+db.define_table('entry_tag',
+    Field('entry_id'),
+    Field('tag_id'),
+    format='%(entry_id)s'
+)
+
 
 db.entry.category.readable = True
 db.entry.id.readable = False

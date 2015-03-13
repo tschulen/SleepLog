@@ -46,6 +46,7 @@
   response.files.insert(2,URL('static','css/bootstrap-responsive.min.css'))
   response.files.insert(3,URL('static','css/web2py_bootstrap.css'))
   response.files.insert(4,URL('static','css/myCss.css'))
+  response.files.insert(5,URL('static','css/simple-sidebar.css'))
   }}
 
   {{include 'web2py_ajax.html'}}
@@ -106,36 +107,75 @@
         </div>
 	{{pass}}
     </header>
+    <div id="wrapper">
 
-    <section id="main" class="main row">
-        {{if left_sidebar_enabled:}}
-        <div class="span3 left-sidebar">
-            {{block left_sidebar}}
-            <h3>Menu</h3>
-            <div class="links">
-            <p><a href="about">About</a></p>
-            <p><a href="#">Techniques</a></p>
-            <p><a href="#">Statistics</a></p>
-            </div>
-            {{end}}
-        </div>
-        {{pass}}
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                <p>Menu</p>
+                  <!--  <a href="index">SleepLog</a> -->
+                </li>
+                <div class="links">
+                <li>
+                    <a href="index">Dreams</a>
+                </li>
+                <li>
+                    <a href="about">About</a>
+                </li>
+                <li>
+                    <a href="faq">FAQ</a>
+                </li>
+                <li>
+                    <a href="statistics">Statistics</a>
+                </li>
+                <li>
+                    <a href="chat">Chat</a>
+                </li>
+                <li>
+                    <a href="emailexample">Email Sample</a>
+                </li>
+                <li>
+                    <!-- Start HTML Code --><iframe WIDTH="170" HEIGHT="400" title="Shoutbox" src="http://shoutbox.widget.me/window.html?uid=vjcmwjzy" frameborder="0" scrolling="auto"></iframe><script src="http://shoutbox.widget.me/v1.js" type="text/javascript"></script><!-- End HTML Code -->
+                </li>
+                </div>
+            </ul>
 
-        <div class="{{=middle_columns}}">
-            {{block center}}
-            {{include}}
-            {{end}}
         </div>
+        <!-- Page Content -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&#10096; </a>
+        <div id="page-content-wrapper">
+          
+          <section id="main" class="main row">
+              {{if left_sidebar_enabled:}}
+              <div class="span3 left-sidebar">
+                  {{block left_sidebar}}
+                  <!-- <h3>Menu</h3>
+                  <div class="links">
+                  <p><a href="about">About</a></p>
+                  <p><a href="#">Techniques</a></p>
+                  <p><a href="#">Statistics</a></p>
+                  </div> -->
+                  {{end}}
+              </div>
+              {{pass}}
 
-        {{if right_sidebar_enabled:}}
-        <div class="span3">
-            {{block right_sidebar}}
-            <h3>Right Sidebar</h3>
-            <p></p>
-            {{end}}
-        </div>
-        {{pass}}
-    </section><!--/main-->
+              <div class="{{=middle_columns}}">
+                  {{block center}}
+                  {{include}}
+                  {{end}}
+              </div>
+
+              {{if right_sidebar_enabled:}}
+              <div class="span3">
+                  {{block right_sidebar}}
+                  <h3>Right Sidebar</h3>
+                  <p></p>
+                  {{end}}
+              </div>
+              {{pass}}
+          </section><!--/main-->
+        </div> <!-- /page-content-wrapper -->
     </div> <!-- /postcontents -->
     <!-- Footer ================================================== -->
     <div class="row">
@@ -176,11 +216,26 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   {{pass}}
   <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
   <script>
+
+    // Title fades in
     $(document).ready(function () {
         $('.page-header').hide().fadeIn(1200);
     });
+
+    // Toggles the left menu
+    var toggleMenu=0;
+    $("#menu-toggle").click(function(e) {
+        toggleMenu++;
+        toggleMenu%=2;
+        if(toggleMenu ==1){
+          document.getElementById("menu-toggle").innerHTML= "&#10097; "
+        }else{
+          document.getElementById("menu-toggle").innerHTML= "&#10096; "
+        }
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
   </script>
 
 </body>
 </html>
-
