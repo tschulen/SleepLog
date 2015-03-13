@@ -2978,3 +2978,24 @@ success!
 success!
 success!
 success!
+success!
+success!
+timestamp: 2015-03-12T16:58:03.633349
+CREATE TABLE tags(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512)
+);
+success!
+timestamp: 2015-03-12T16:58:03.835877
+CREATE TABLE entry_tag(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    entry_id CHAR(512),
+    tag_id CHAR(512)
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!

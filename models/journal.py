@@ -11,6 +11,18 @@ db.define_table('entry',
         Field('tags', 'list:string'),
         )
 
+db.define_table('tags',
+    Field('title'),
+    format='%(id)s'
+)
+
+db.define_table('entry_tag',
+    Field('entry_id'),
+    Field('tag_id'),
+    format='%(entry_id)s'
+)
+
+
 db.entry.category.readable = True
 db.entry.id.readable = False
 db.entry.date_posted.default = datetime.utcnow()
