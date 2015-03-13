@@ -3003,3 +3003,13 @@ success!
 success!
 success!
 success!
+timestamp: 2015-03-12T18:20:14.919529
+ALTER TABLE auth_user ADD username CHAR(50);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
