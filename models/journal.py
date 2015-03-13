@@ -7,19 +7,17 @@ db.define_table('entry',
         Field('private', 'boolean'),
         Field('category'),
         Field('user_id', db.auth_user),
-        Field('picture', 'upload'),           #User profile picture. TODO: Set Size Const. to 100x100px
+        Field('picture', 'upload'), #User profile picture. TODO: Set Size Const. to 100x100px
         Field('tags', 'list:string'),
         )
 
-db.define_table('tags',
+db.define_table('tag',
     Field('title'),
-    format='%(id)s'
 )
 
 db.define_table('entry_tag',
-    Field('entry_id'),
-    Field('tag_id'),
-    format='%(entry_id)s'
+    Field('entry_id', db.entry),
+    Field('tag_id', db.tag),
 )
 
 
