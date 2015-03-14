@@ -81,6 +81,13 @@ def index():
 
     return dict(title=title, grid=grid)
 
+@auth.requires_login() 
+def suggestions():
+        s=db.suggestions
+        formsuggestions = SQLFORM(s)
+  
+        return dict(formsuggestions=formsuggestions)
+
 def chat():
     return dict()
 
