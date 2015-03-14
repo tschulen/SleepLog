@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+<h2>Have a comment, suggestion, or issue about the site? Please tell us below!</h2>
+<h3>
+    Please tell us below!
+</h3>
+{{=formsuggestions}}
