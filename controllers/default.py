@@ -126,13 +126,18 @@ def statistics():
     nightmare_count = db(db.entry.category == 'Nightmare').count()    
     lucid_count = db(db.entry.category == 'Lucid').count()    
     tag_list = []
-    #a = db(db.tag.name == 'horror').count()
-    for row in db().select(
-            db.tag.ALL, groupby=db.tag.name):
+    count_dict = dict()
+    for row in db().select(db.tag.ALL):
+        row_name = str(row.name)
         if row.name is not '':
-            tag_list.append(row.name)
+            if not row.name in count_dict:
+                count_dict[row.name] = 1
+            else:
+                count_dict[row.name] += 1
+    top_five_tags = sorted(count_dict, key=count_dict.get, reverse=True)[:5]
+
     return dict(normal_count=normal_count, nightmare_count=nightmare_count,
-                lucid_count=lucid_count, tag_list=tag_list)
+                lucid_count=lucid_count, top_five_tags=top_five_tags)
 
 def chat():
     return dict()
