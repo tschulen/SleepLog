@@ -42,7 +42,7 @@ audio {width:200px}
 /* Sticky footer begin */
 
 .links a {
-    color: #9460AC;
+    color: #DBFFB2;
 }
 
 .footer,.push {
@@ -158,7 +158,7 @@ div.error {
 }
 
 .topbar a {
-    color:#e1e1e1;
+    color:#FFC3B2;
 }
 
 #navbar {float:right; padding:5px; /* same as superfish */}
@@ -196,7 +196,7 @@ div.error {
 .web2py_grid .web2py_form td {vertical-align: top;}
 
 .web2py_grid thead th,.web2py_grid tfoot td {
-    background-color:#F4E9F9;
+    background-color:#DBFFB2;
     padding:10px 5px 10px 5px;
     border: 1px;
 
@@ -204,7 +204,7 @@ div.error {
     color: black;
 }
 
-.web2py_grid tr:hover {background-color:#FCEAF3}
+.web2py_grid tr:hover {background-color:#DBFFB2}
 
 .web2py_grid td {
     color: black;

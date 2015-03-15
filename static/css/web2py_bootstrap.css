@@ -16,21 +16,21 @@
 }
 
 .navbar-inverse .navbar-inner{
-  background-color: #B990CD;
+  background-color: #C3BFFF;
   background-image: none;
 }
 
 .navbar-inverse .nav>li>a{
-  color: white;
+  color: gray;
 }
 
 #wrapper #sidebar-wrapper  {
-  background-color: #B990CD;
+  background-color: #C3BFFF;
   border: 2px;
 }
 
 #sidebar-wrapper .sidebar-nav .sidebar-brand{
-  background-color: #ECE7F8;
+  background-color: #FFC3B2;
 }
 #sidebar-wrapper a{
   color: black;
