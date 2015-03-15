@@ -80,6 +80,7 @@ def index():
                 links = links,
                 paginate = 10,
                 upload = url,
+                orderby=~db.entry.date_posted,
     )  
 
     return dict(title=title, grid=grid, new_entry_btn=new_entry_btn)
@@ -124,9 +125,14 @@ def statistics():
     normal_count = db(db.entry.category == 'Normal').count()    
     nightmare_count = db(db.entry.category == 'Nightmare').count()    
     lucid_count = db(db.entry.category == 'Lucid').count()    
-    a = db(db.tag.name == 'horror').count()
+    tag_list = []
+    #a = db(db.tag.name == 'horror').count()
+    for row in db().select(
+            db.tag.ALL, groupby=db.tag.name):
+        if row.name is not '':
+            tag_list.append(row.name)
     return dict(normal_count=normal_count, nightmare_count=nightmare_count,
-                lucid_count=lucid_count, a=a)
+                lucid_count=lucid_count, tag_list=tag_list)
 
 def chat():
     return dict()
