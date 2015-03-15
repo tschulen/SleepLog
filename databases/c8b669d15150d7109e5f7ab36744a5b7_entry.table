@@ -129,7 +129,7 @@ I00
 sg10
 S'boolean'
 p40
-ssS'id'
+ssS'date_posted'
 p41
 (dp42
 g4
@@ -137,14 +137,14 @@ I512
 sg5
 I00
 sg6
-I1
+I2
 sg7
-S'INTEGER PRIMARY KEY AUTOINCREMENT'
+S'TIMESTAMP'
 p43
 sg9
 I00
 sg10
-S'id'
+S'datetime'
 p44
 ssS'is_private'
 p45
@@ -169,7 +169,7 @@ sS'type'
 p53
 S'boolean'
 p54
-ssS'date_posted'
+ssS'id'
 p55
 (dp56
 g4
@@ -177,14 +177,14 @@ I512
 sg5
 I00
 sg6
-I2
+I1
 sg7
-S'TIMESTAMP'
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
 p57
 sg9
 I00
 sg10
-S'datetime'
+S'id'
 p58
 ssS'tags'
 p59
