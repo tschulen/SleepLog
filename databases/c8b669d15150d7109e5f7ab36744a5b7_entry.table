@@ -201,6 +201,6 @@ p61
 sg9
 I00
 sg10
-S'list:string'
+S'list:reference tag'
 p62
 ss.

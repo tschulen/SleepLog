@@ -14,6 +14,8 @@ def index():
     title = db().select(db.entry.title)
     entries = db().select(db.entry.body)
     url = URL('download')
+    new_entry_btn = A('New Entry', _class='btn', _href=URL('default', 'new_entry'))
+
 
     def generate_view_button(row):
         b = '' 
@@ -70,16 +72,17 @@ def index():
         fields=[db.entry.user_id, 
                 db.entry.category, db.entry.title,
                 db.entry.body, db.entry.date_posted],
-                csv= False,
-                editable=False,
-                deletable=False,
+                create=False,
+                csv = False,
+                editable =False,
+                deletable = False,
                 details = False,
                 links = links,
-                paginate=10,
-                upload= url,
+                paginate = 10,
+                upload = url,
     )  
 
-    return dict(title=title, grid=grid)
+    return dict(title=title, grid=grid, new_entry_btn=new_entry_btn)
 
 @auth.requires_login()
 def new_entry():
@@ -96,7 +99,7 @@ def new_entry():
         for tag in form.vars.tags:
             db.tag.insert(name=tag)
             
-            
+        redirect(URL('index'))
         response.flash = 'Success!'
 
     return dict(form=form)
