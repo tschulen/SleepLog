@@ -200,15 +200,13 @@ div.error {
     padding:10px 5px 10px 5px;
     border: 1px;
 
-} .web2py_grid a {
+} 
+.web2py_grid a {
     color: black;
 }
 
 .web2py_grid tr:hover {background-color:#DBFFB2}
 
-.web2py_grid td {
-    color: black;
-}
 
 /*
 .web2py_breadcrumbs a {
