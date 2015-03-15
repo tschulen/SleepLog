@@ -77,9 +77,29 @@ def index():
                 links = links,
                 paginate=10,
                 upload= url,
-                )  
+    )  
 
     return dict(title=title, grid=grid)
+
+@auth.requires_login()
+def new_entry():
+    form = SQLFORM.factory(
+        Field('title', requires=IS_NOT_EMPTY()),
+        Field('body', 'text'),
+        Field('private', 'boolean'),
+        Field('category', requires=IS_IN_SET(['Normal', 'Nightmare', 'Lucid'])),
+        Field('tags', 'list:string'),  
+    )
+    if form.process().accepted:
+        entry = db.entry.insert(title=form.vars.title, body=form.vars.body,
+                        private=form.vars.private, category=form.vars.category)
+        for tag in form.vars.tags:
+            db.tag.insert(name=tag)
+            
+            
+        response.flash = 'Success!'
+
+    return dict(form=form)
 
 @auth.requires_login() 
 def suggestions():
@@ -101,8 +121,9 @@ def statistics():
     normal_count = db(db.entry.category == 'Normal').count()    
     nightmare_count = db(db.entry.category == 'Nightmare').count()    
     lucid_count = db(db.entry.category == 'Lucid').count()    
+    a = db(db.tag.name == 'horror').count()
     return dict(normal_count=normal_count, nightmare_count=nightmare_count,
-                lucid_count=lucid_count)
+                lucid_count=lucid_count, a=a)
 
 def chat():
     return dict()
