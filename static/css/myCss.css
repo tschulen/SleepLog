@@ -24,3 +24,47 @@ canvas {
 	/*Other options are: repeat, repeat-x, repeat-y, no-repeat*/
 }
 
+table {
+ table-layout:auto;
+ width:100%;
+ border-radius:1em;
+
+}
+
+table tr th,
+table tr td{
+ height:30px;
+ overflow:hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ border:0px solid blue;
+ border-radius:1em;
+ text-align: center;
+}
+
+
+div.navbar{
+border:0px;
+highet
+}
+
+navbar navbar-inverse{
+border:0px;
+
+
+}
+div.navbar-inner{
+border:0px;
+}
+
+#sidebar-wrapper{
+ border-radius: 1em;
+}
+
+div.web2py_paginator{
+ border-radius: 1em;
+
+ margin-bottom: 3px;
+
+}
+
