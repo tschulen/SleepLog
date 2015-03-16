@@ -34,13 +34,12 @@
 
 .chart div {
   font: 10px sans-serif;
-  background-color: #935FA9;
+  background-color: #C3BFFF;
   text-align: right;
   padding: 3px;
   margin: 1px;
   color: white;
 }
-
 
 </style>
 <div class="chart">
@@ -49,7 +48,9 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 var data = [{{=normal_count}}, {{=nightmare_count}}, {{=lucid_count}} ];
-
+var data_text = ['Normal', 'Nightmare', 'Lucid'];
+var i = 0;
+var cat;
 var x = d3.scale.linear()
     .domain([0, d3.max(data)])
     .range([0, 420]);
@@ -59,7 +60,11 @@ d3.select(".chart")
     .data(data)
   .enter().append("div")
     .style("width", function(d) { return x(d) + "px"; })
-    .text(function(d) { return d; });
+    .text(function(d) { 
+            cat = data_text[i];
+            ++i;
+            return cat;
+            });
 
 </script>
 

@@ -14,7 +14,7 @@ def index():
     title = db().select(db.entry.title)
     entries = db().select(db.entry.body)
     url = URL('download')
-    new_entry_btn = A('New Entry', _class='btn-nav2', _href=URL('default', 'new_entry'))
+    new_entry_btn = A('New Entry', _class='btn', _href=URL('default', 'new_entry'))
 
 
     def generate_view_button(row):
@@ -26,7 +26,7 @@ def index():
                          _id = "cloudpic", _border = "0",
                          _onMouseOver = "this.src='/SleepLog/static/images/cloud3.png'",
                          _onMouseOut = "this.src='/SleepLog/static/images/cloud.png'" ),
-                         _class = 'btn-grid', _href=URL('default','view',args=[row.id]))
+                         _class = 'btn', _href=URL('default','view',args=[row.id]))
         # Ghost button for 'Normal' category
         elif row.category == "Nightmare":
             b = A(IMG(_src=URL('static/images','ghost.png'), _name = "ghostbutton", 
@@ -34,7 +34,7 @@ def index():
                         _id = "ghostpic", _border = "0",
                         _onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
-                        _class = 'btn-grid', _href=URL('default','view',args=[row.id]))
+                        _class = 'btn', _href=URL('default','view',args=[row.id]))
         # Star button for 'Normal' category
         # TODO May want to have star glow when hovering over with mouse
         elif row.category == "Lucid":
@@ -43,7 +43,7 @@ def index():
                         _id = "starpic", _border="0", 
                         _onMouseOver = "this.src='/SleepLog/static/images/star2.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/star.png'"),
-                        _class = 'btn-grid', _href=URL('default','view',args=[row.id]))
+                        _class = 'btn', _href=URL('default','view',args=[row.id]))
         return b
 
 
@@ -155,6 +155,7 @@ def statistics():
                 lucid_count=lucid_count, top_five_tags=top_five_tags,
                 tag1=tag1, tag2=tag2, tag3=tag3, tag4=tag4, tag5=tag5)
 
+
 def chat():
     return dict()
     
@@ -217,11 +218,6 @@ def new_post():
     elif form.errors:
         return TABLE(*[TR(k, v) for k, v in form.errors.items()])
 
-@auth.requires_login()
-def post():
-    return dict(form=SQLFORM(db.comment_post).process(),
-                comments=db(db.comment_post).select())
-
 def user():
     """
     exposes:
@@ -275,8 +271,6 @@ def manage():
     grid = SQLFORM.smartgrid(db.entry, linked_tables=['entry'])
     return dict(grid=grid)
 
-
-
 @auth.requires_login()
 def edit():
     """edit post"""
@@ -313,6 +307,23 @@ def view():
     form = SQLFORM(db.entry, record = p, readonly = True, upload=url)
     # p.name would contain the name of the poster.
     return dict(form=form, dreamCategory=dreamCategory)
+
+def view_tag():
+    grid = SQLFORM.grid(q,
+        fields=[db.entry.user_id, 
+                db.entry.category, db.entry.title,
+                db.entry.body, db.entry.date_posted],
+                create=False,
+                csv = False,
+                editable =False,
+                deletable = False,
+                details = False,
+                links = links,
+                paginate = 10, 
+                upload = url,
+                orderby=~db.entry.date_posted,
+    ) 
+    return dict(grid=grid)
 
 
 #New default register screen controller
