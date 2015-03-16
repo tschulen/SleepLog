@@ -35,3 +35,22 @@ db.entry.user_id.default = auth.user_id
 db.entry.user_id.writable = db.entry.user_id.readable = False
 
 db.entry.category.requires = IS_IN_SET(['Normal', 'Nightmare', 'Lucid'])
+
+#Table for User suggestions for the website
+db.define_table('suggestions',
+        Field('date_posted', 'datetime'),
+        Field('user_id', db.auth_user),
+        Field('category'),
+        Field('msg', 'text'),
+        )
+
+#Restrictions/Settings for suggestions table
+CATEGORY = ['Suggestion', 'Issue/bug', 'Comment']
+db.suggestions.category.readable=True
+db.suggestions.category.default = 'Comment'
+db.suggestions.category.required = True
+db.suggestions.category.requires = IS_IN_SET(CATEGORY, zero=None)
+db.suggestions.date_posted.default = datetime.utcnow()
+db.suggestions.date_posted.writable =db.suggestions.date_posted.readable = False
+db.suggestions.user_id.default=auth.user_id
+db.suggestions.user_id.writable = db.suggestions.user_id.readable = False
