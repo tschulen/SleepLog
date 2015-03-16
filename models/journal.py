@@ -1,5 +1,6 @@
 from datetime import datetime
 
+#Defines table entry
 db.define_table('entry',
         Field('date_posted', 'datetime'),
         Field('title'),
