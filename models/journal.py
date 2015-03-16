@@ -15,7 +15,11 @@ db.define_table('tag',
     Field('name'),
     format='%(name)s'
 )
+db.define_table('comments',
+    Field('commentpost', 'text')
+)
 
+db.comments.commentpost.requires = IS_NOT_EMPTY()
 db.entry.category.readable = True
 db.entry.id.readable = False
 db.entry.date_posted.default = datetime.utcnow()

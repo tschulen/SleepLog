@@ -191,6 +191,16 @@ def get_email():
         a = auth.user.email
     return a
 
+def new_post():
+    form = SQLFORM(db.comments)
+    if form.accepts(request, formname=None):
+        # q2 = db(db.comments.commentpost!=None).select().last() #This grabs last element in db
+        q2 = db(db.comments.commentpost!=None).select() #grabs the db section
+        # return DIV(q2.commentpost) #This just returns the post
+        return DIV(q2) #This returns the database
+    elif form.errors:
+        return TABLE(*[TR(k, v) for k, v in form.errors.items()])
+
 def user():
     """
     exposes:

@@ -40,8 +40,21 @@
 
 {{pass}}
 
+<form id="myform">
+	<input name="commentpost" id="commentpost" />
+	<input type="submit" />
+</form>
+
+<p id="target2"></p>
+
  </div>
 <p>
 {{=A('Return', _class='btn',_href=URL('default','index'))}}
 </p>
 
+<script>
+jQuery('#myform').submit(function() {
+	ajax('{{=URL('new_post')}}', ['commentpost'], 'target2');
+	return false;
+});
+</script>
