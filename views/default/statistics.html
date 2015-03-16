@@ -2,9 +2,33 @@
 {{extend 'layout.html'}}
 
 <h2>Statistics</h2>
-<h4>Categories</h4>
 
-{{=top_five_tags}}
+
+<div class="top_tags">
+<h3>Top 5 tags</h3>
+<ol>
+{{if tag1 is not None:}}
+<li>{{=tag1}}</li>
+{{pass}}
+
+{{if tag2 is not None:}}
+<li>{{=tag2}}</li>
+{{pass}}
+
+{{if tag3 is not None:}}
+<li>{{=tag3}}</li>
+{{pass}}
+
+{{if tag4 is not None:}}
+<li>{{=tag4}}</li>
+{{pass}}
+
+{{if tag5 is not None:}}
+<li>{{=tag5}}</li>
+{{pass}}
+</ol>
+</div>
+
 <meta charset="utf-8">
 <style>
 
@@ -19,7 +43,9 @@
 
 
 </style>
-<div class="chart"></div>
+<div class="chart">
+    <h3>Categories</h3>   
+</div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 var data = [{{=normal_count}}, {{=nightmare_count}}, {{=lucid_count}} ];

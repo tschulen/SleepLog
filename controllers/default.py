@@ -135,9 +135,25 @@ def statistics():
             else:
                 count_dict[row.name] += 1
     top_five_tags = sorted(count_dict, key=count_dict.get, reverse=True)[:5]
-
+    tag1 = None
+    tag2 = None
+    tag3 = None
+    tag4 = None
+    tag5 = None
+    for i in range(0, len(top_five_tags)): 
+        if i == 0:
+            tag1 = top_five_tags[i]
+        elif i == 1:
+            tag2 = top_five_tags[i]
+        elif i == 2:
+            tag3 = top_five_tags[i]
+        elif i == 3:
+            tag4 = top_five_tags[i]
+        elif i == 4:
+            tag5 = top_five_tags[i]
     return dict(normal_count=normal_count, nightmare_count=nightmare_count,
-                lucid_count=lucid_count, top_five_tags=top_five_tags)
+                lucid_count=lucid_count, top_five_tags=top_five_tags,
+                tag1=tag1, tag2=tag2, tag3=tag3, tag4=tag4, tag5=tag5)
 
 def chat():
     return dict()
