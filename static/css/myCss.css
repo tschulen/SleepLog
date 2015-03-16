@@ -11,7 +11,7 @@ canvas {
 .btn{
 	position: relative;
 	z-index: 1;
-        background: aliceblue;
+        background: transparent;
 }
 
 #viewable {
