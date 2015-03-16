@@ -14,6 +14,8 @@ def index():
     title = db().select(db.entry.title)
     entries = db().select(db.entry.body)
     url = URL('download')
+    new_entry_btn = A('New Entry', _class='btn', _href=URL('default', 'new_entry'))
+
 
     def generate_view_button(row):
         b = '' 
@@ -70,16 +72,50 @@ def index():
         fields=[db.entry.user_id, 
                 db.entry.category, db.entry.title,
                 db.entry.body, db.entry.date_posted],
-                csv= False,
-                editable=False,
-                deletable=False,
+                create=False,
+                csv = False,
+                editable =False,
+                deletable = False,
                 details = False,
                 links = links,
-                paginate=10,
-                upload= url,
-                )  
+                paginate = 10,
+                upload = url,
+                orderby=~db.entry.date_posted,
+    )  
 
-    return dict(title=title, grid=grid)
+    return dict(title=title, grid=grid, new_entry_btn=new_entry_btn)
+
+@auth.requires_login()
+def new_entry():
+    form = SQLFORM.factory(
+        Field('title', requires=IS_NOT_EMPTY()),
+        Field('body', 'text'),
+        Field('private', 'boolean'),
+        Field('category', requires=IS_IN_SET(['Normal', 'Nightmare', 'Lucid'])),
+        Field('tags', 'list:string'),  
+    )
+    if form.process().accepted:
+        entry = db.entry.insert(title=form.vars.title, body=form.vars.body,
+                        private=form.vars.private, category=form.vars.category)
+        for tag in form.vars.tags:
+            db.tag.insert(name=tag)
+            
+        redirect(URL('index'))
+        response.flash = 'Success!'
+
+    return dict(form=form)
+
+@auth.requires_login() 
+def suggestions():
+        s=db.suggestions
+        formsuggestions = SQLFORM.grid(s,
+                       fields=[db.suggestions.category,
+                               db.suggestions.msg,],
+                               editable= False,
+                               deletable= False,
+                       )
+  
+        return dict(formsuggestions=formsuggestions)
 
 def chat():
     return dict()
@@ -94,8 +130,36 @@ def statistics():
     normal_count = db(db.entry.category == 'Normal').count()    
     nightmare_count = db(db.entry.category == 'Nightmare').count()    
     lucid_count = db(db.entry.category == 'Lucid').count()    
+    tag_list = []
+    count_dict = dict()
+    for row in db().select(db.tag.ALL):
+        row_name = str(row.name)
+        if row.name is not '':
+            if not row.name in count_dict:
+                count_dict[row.name] = 1
+            else:
+                count_dict[row.name] += 1
+    top_five_tags = sorted(count_dict, key=count_dict.get, reverse=True)[:5]
+    tag1 = None
+    tag2 = None
+    tag3 = None
+    tag4 = None
+    tag5 = None
+    for i in range(0, len(top_five_tags)): 
+        if i == 0:
+            tag1 = top_five_tags[i]
+        elif i == 1:
+            tag2 = top_five_tags[i]
+        elif i == 2:
+            tag3 = top_five_tags[i]
+        elif i == 3:
+            tag4 = top_five_tags[i]
+        elif i == 4:
+            tag5 = top_five_tags[i]
     return dict(normal_count=normal_count, nightmare_count=nightmare_count,
-                lucid_count=lucid_count)
+                lucid_count=lucid_count, top_five_tags=top_five_tags,
+                tag1=tag1, tag2=tag2, tag3=tag3, tag4=tag4, tag5=tag5)
+
 
 def chat():
     return dict()
@@ -148,6 +212,16 @@ def get_email():
     if auth.user:
         a = auth.user.email
     return a
+
+def new_post():
+    form = SQLFORM(db.comments)
+    if form.accepts(request, formname=None):
+        # q2 = db(db.comments.commentpost!=None).select().last() #This grabs last element in db
+        q2 = db(db.comments.commentpost!=None).select() #grabs the db section
+        # return DIV(q2.commentpost) #This just returns the post
+        return DIV(q2) #This returns the database
+    elif form.errors:
+        return TABLE(*[TR(k, v) for k, v in form.errors.items()])
 
 def user():
     """
@@ -202,8 +276,6 @@ def manage():
     grid = SQLFORM.smartgrid(db.entry, linked_tables=['entry'])
     return dict(grid=grid)
 
-
-
 @auth.requires_login()
 def edit():
     """edit post"""
@@ -240,6 +312,23 @@ def view():
     form = SQLFORM(db.entry, record = p, readonly = True, upload=url)
     # p.name would contain the name of the poster.
     return dict(form=form, dreamCategory=dreamCategory)
+
+def view_tag():
+    grid = SQLFORM.grid(q,
+        fields=[db.entry.user_id, 
+                db.entry.category, db.entry.title,
+                db.entry.body, db.entry.date_posted],
+                create=False,
+                csv = False,
+                editable =False,
+                deletable = False,
+                details = False,
+                links = links,
+                paginate = 10, 
+                upload = url,
+                orderby=~db.entry.date_posted,
+    ) 
+    return dict(grid=grid)
 
 
 #New default register screen controller

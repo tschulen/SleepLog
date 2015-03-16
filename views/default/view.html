@@ -7,7 +7,6 @@
 <h1>Post</h1>
 
 {{=form}}
-
 {{if dreamCategory == 'Nightmare':}}
 
 	<script type="text/javascript">
@@ -41,8 +40,27 @@
 
 {{pass}}
 
+<h2>method 1</h2>
+<form id="myform">
+	<input name="commentpost" id="commentpost" />
+	<input type="submit" />
+</form>
+
+<p id="target2"></p>
+
  </div>
+
+ <h2>method 2</h2>
+{{=LOAD('default','post.load',ajax=True)}}
+
+
 <p>
 {{=A('Return', _class='btn',_href=URL('default','index'))}}
 </p>
 
+<script>
+jQuery('#myform').submit(function() {
+	ajax('{{=URL('new_post')}}', ['commentpost'], 'target2');
+	return false;
+});
+</script>
