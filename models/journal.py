@@ -11,19 +11,7 @@ db.define_table('entry',
         Field('tags', 'list:reference tag'),
 )
 
-db.define_table('tag',
-    Field('name'),
-    format='%(name)s'
-)
-db.define_table('comments',
-    Field('commentpost', 'text')
-)
-
-db.define_table('comment_post',
-   Field('body','text',label='Your comment'),
-   auth.signature)
-
-db.comments.commentpost.requires = IS_NOT_EMPTY()
+#Restrictions/Settings for entry table
 db.entry.category.readable = True
 db.entry.id.readable = False
 db.entry.date_posted.default = datetime.utcnow()
@@ -33,8 +21,25 @@ db.entry.tags.readable = False
 db.entry.tags.writable = False
 db.entry.user_id.default = auth.user_id
 db.entry.user_id.writable = db.entry.user_id.readable = False
-
 db.entry.category.requires = IS_IN_SET(['Normal', 'Nightmare', 'Lucid'])
+
+#Defines table for tag
+db.define_table('tag',
+    Field('name'),
+    format='%(name)s'
+)
+
+#Defines table for comments
+db.define_table('comments',
+    Field('commentpost', 'text')
+)
+#Restriction/Setting for comments table
+db.comments.commentpost.requires = IS_NOT_EMPTY()
+
+#Defines table for comment posts
+db.define_table('comment_post',
+   Field('body','text',label='Your comment'),
+   auth.signature)
 
 #Table for User suggestions for the website
 db.define_table('suggestions',
