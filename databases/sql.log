@@ -83,3 +83,14 @@ CREATE TABLE comments(
     commentpost TEXT
 );
 success!
+timestamp: 2015-03-15T20:35:23.981257
+CREATE TABLE comment_post(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body TEXT,
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE
+);
+success!

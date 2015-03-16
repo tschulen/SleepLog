@@ -217,6 +217,11 @@ def new_post():
     elif form.errors:
         return TABLE(*[TR(k, v) for k, v in form.errors.items()])
 
+@auth.requires_login()
+def post():
+    return dict(form=SQLFORM(db.comment_post).process(),
+                comments=db(db.comment_post).select())
+
 def user():
     """
     exposes:
