@@ -40,6 +40,7 @@
 
 {{pass}}
 
+<h2>method 1</h2>
 <form id="myform">
 	<input name="commentpost" id="commentpost" />
 	<input type="submit" />
@@ -48,6 +49,11 @@
 <p id="target2"></p>
 
  </div>
+
+ <h2>method 2</h2>
+{{=LOAD('default','post.load',ajax=True)}}
+
+
 <p>
 {{=A('Return', _class='btn',_href=URL('default','index'))}}
 </p>

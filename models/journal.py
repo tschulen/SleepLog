@@ -19,6 +19,10 @@ db.define_table('comments',
     Field('commentpost', 'text')
 )
 
+db.define_table('comment_post',
+   Field('body','text',label='Your comment'),
+   auth.signature)
+
 db.comments.commentpost.requires = IS_NOT_EMPTY()
 db.entry.category.readable = True
 db.entry.id.readable = False
