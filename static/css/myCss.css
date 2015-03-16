@@ -8,11 +8,33 @@ canvas {
 	z-index: -1;
 	/*I was told having z-index -1 is bad for certain browsers, but feel free to test*/
 }
-.btn{
+.btn-grid{
 	position: relative;
 	z-index: 1;
-        background: transparent;
+       width   : 30px;
+
+    background  : none;
+    cursor  : pointer;
+
+    color   : #fff;
+    border  : none;
+    margin      : 5px;
+    padding     : 0px;
 }
+
+.btn-nav{
+	-webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #ffc3b2;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+
 
 #viewable {
 	position: relative;

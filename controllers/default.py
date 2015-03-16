@@ -26,7 +26,7 @@ def index():
                          _id = "cloudpic", _border = "0",
                          _onMouseOver = "this.src='/SleepLog/static/images/cloud3.png'",
                          _onMouseOut = "this.src='/SleepLog/static/images/cloud.png'" ),
-                         _class = 'btn', _href=URL('default','view',args=[row.id]))
+                         _class = 'btn-grid', _href=URL('default','view',args=[row.id]))
         # Ghost button for 'Normal' category
         elif row.category == "Nightmare":
             b = A(IMG(_src=URL('static/images','ghost.png'), _name = "ghostbutton", 
@@ -34,7 +34,7 @@ def index():
                         _id = "ghostpic", _border = "0",
                         _onMouseOver = "this.src='/SleepLog/static/images/ghost2.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/ghost.png'" ),
-                        _class = 'btn', _href=URL('default','view',args=[row.id]))
+                        _class = 'btn-grid', _href=URL('default','view',args=[row.id]))
         # Star button for 'Normal' category
         # TODO May want to have star glow when hovering over with mouse
         elif row.category == "Lucid":
@@ -43,7 +43,7 @@ def index():
                         _id = "starpic", _border="0", 
                         _onMouseOver = "this.src='/SleepLog/static/images/star2.png'",
                         _onMouseOut = "this.src='/SleepLog/static/images/star.png'"),
-                        _class = 'btn', _href=URL('default','view',args=[row.id]))
+                        _class = 'btn-grid', _href=URL('default','view',args=[row.id]))
         return b
 
 
