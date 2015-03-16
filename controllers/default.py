@@ -110,7 +110,9 @@ def suggestions():
         s=db.suggestions
         formsuggestions = SQLFORM.grid(s,
                        fields=[db.suggestions.category,
-                               db.suggestions.msg,]
+                               db.suggestions.msg,],
+                               editable= False,
+                               deletable= False,
                        )
   
         return dict(formsuggestions=formsuggestions)
