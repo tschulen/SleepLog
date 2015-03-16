@@ -108,7 +108,10 @@ def new_entry():
 @auth.requires_login() 
 def suggestions():
         s=db.suggestions
-        formsuggestions = SQLFORM(s)
+        formsuggestions = SQLFORM.grid(s,
+                       fields=[db.suggestions.category,
+                               db.suggestions.msg,]
+                       )
   
         return dict(formsuggestions=formsuggestions)
 
