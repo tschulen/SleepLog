@@ -34,6 +34,20 @@ canvas {
   text-decoration: none;
 }
 
+.btn-nav2{
+	-webkit-border-radius: 14;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #ffc3b2;
+  padding: 10px 20px 10px 20px;
+   margin: 5px;
+
+  text-decoration: none;
+}
+
 
 
 #viewable {

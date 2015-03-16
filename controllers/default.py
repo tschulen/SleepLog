@@ -14,7 +14,7 @@ def index():
     title = db().select(db.entry.title)
     entries = db().select(db.entry.body)
     url = URL('download')
-    new_entry_btn = A('New Entry', _class='btn', _href=URL('default', 'new_entry'))
+    new_entry_btn = A('New Entry', _class='btn-nav2', _href=URL('default', 'new_entry'))
 
 
     def generate_view_button(row):
